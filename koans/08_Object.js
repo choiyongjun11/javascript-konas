@@ -5,8 +5,8 @@ describe('Object에 대해서 학습합니다.', function () {
   */
   it('Object의 기본을 확인합니다.', function () {
     const emptyObj = {};
-    expect(typeof emptyObj === 'object').to.equal(FILL_ME_IN);
-    expect(emptyObj.length).to.equal(FILL_ME_IN);
+    expect(typeof emptyObj === 'object').to.equal(true);
+    expect(emptyObj.length).to.equal(undefined); //object에서는 length를 못쓴다.
 
     const megalomaniac = {
       mastermind: 'Joker',
@@ -16,37 +16,37 @@ describe('Object에 대해서 학습합니다.', function () {
       },
       relations: ['Anarky', 'Duela Dent', 'Lucy'],
       twins: {
-        'Jared Leto': 'Suicide Squad',
+        'Jared Leto': 'Suicide Squad',  //key: value 
         'Joaquin Phoenix': 'Joker',
         'Heath Ledger': 'The Dark Knight',
         'Jack Nicholson': 'Tim Burton Batman',
       },
     };
 
-    expect(megalomaniac.length).to.equal(FILL_ME_IN);
-    expect(megalomaniac.mastermind).to.equal(FILL_ME_IN);
-    expect(megalomaniac.henchwoman).to.equal(FILL_ME_IN);
-    expect(megalomaniac.henchWoman).to.equal(FILL_ME_IN);
-    expect(megalomaniac.getMembers()).to.deep.equal(FILL_ME_IN);
-    expect(megalomaniac.relations[FILL_ME_IN]).to.equal('Lucy');
-    expect(megalomaniac.twins['Heath Ledger']).to.deep.equal('FILL_ME_IN');
+    expect(megalomaniac.length).to.equal(undefined);
+    expect(megalomaniac.mastermind).to.equal('Joker');
+    expect(megalomaniac.henchwoman).to.equal('Harley');
+    expect(megalomaniac.henchWoman).to.equal(undefined);
+    expect(megalomaniac.getMembers()).to.deep.equal(['Joker','Harley']);
+    expect(megalomaniac.relations[2]).to.equal('Lucy');
+    expect(megalomaniac.twins['Heath Ledger']).to.deep.equal('The Dark Knight');
   });
 
   it('Object의 속성(property)를 다루는 방법을 확인합니다.', function () {
     const megalomaniac = { mastermind: 'Agent Smith', henchman: 'Agent Smith' };
 
-    expect('mastermind' in megalomaniac).to.equal(FILL_ME_IN);
+    expect('mastermind' in megalomaniac).to.equal('Agent Smith');
 
     megalomaniac.mastermind = 'Neo';
-    expect(megalomaniac['mastermind']).to.equal(FILL_ME_IN);
+    expect(megalomaniac['mastermind']).to.equal('Neo');
 
-    expect('secretary' in megalomaniac).to.equal(FILL_ME_IN);
+    expect('secretary' in megalomaniac).to.equal(false);
 
     megalomaniac.secretary = 'Agent Smith';
-    expect('secretary' in megalomaniac).to.equal(FILL_ME_IN);
+    expect('secretary' in megalomaniac).to.equal(true);
 
     delete megalomaniac.henchman;
-    expect('henchman' in megalomaniac).to.equal(FILL_ME_IN);
+    expect('henchman' in megalomaniac).to.equal(false);
   });
 
   it("'this'는 method를 호출하는 시점에 결정됩니다.", function () {
